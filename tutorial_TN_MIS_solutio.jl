@@ -107,6 +107,42 @@ density(g_example3)
 # ╔═╡ 39bb832c-cb6a-4a3e-abc8-14d7c7d40037
 log(4)/8
 
+# ╔═╡ 47f22aff-8365-4283-a055-a90e0b7cdc03
+ md"# 4. Example 4"
+
+# ╔═╡ 4b13e105-acbd-4384-af80-8c56341edf08
+begin
+	g_example4 = Graph()
+	add_vertices!(g_example4, 5)
+	add_edge!(g_example4, 1, 2)
+	add_edge!(g_example4, 2, 3)
+	add_edge!(g_example4, 2, 4)
+	add_edge!(g_example4, 1, 4)
+	add_edge!(g_example4, 4, 3)
+	add_edge!(g_example4, 4, 5)
+	add_edge!(g_example4, 3, 5)
+
+	gplot(g_example4, nodelabel=1:5)
+end
+
+# ╔═╡ d43c23ce-f195-4e8c-8faf-fc5ac747ca2f
+begin
+	problem_example_4 = MaximalIS(g_example4; optimizer=TreeSA());
+	count_all_independent_sets_4 = solve(problem_example_4, CountingAll())[]
+end
+
+# ╔═╡ b3b02e37-d252-409d-bfc7-ab9778f36162
+all_max_configs_example_4 = solve(problem_example_4, ConfigsMax(; bounded=true))[]
+
+# ╔═╡ a6507d4a-6d3e-4578-804e-b24430b1dce5
+log(3)/5
+
+# ╔═╡ c2d3f7f5-fb16-45ae-ac69-90b9f739022d
+ md"# 5. Example 5"
+
+# ╔═╡ b285135d-9621-4a0c-a805-4d6c58c39624
+
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -1141,5 +1177,12 @@ version = "3.5.0+0"
 # ╠═ecfeeb74-9daa-46e8-99e0-e0f94e9be76e
 # ╠═218aa5bb-01d7-4d09-9412-9ecebcdd73e9
 # ╠═39bb832c-cb6a-4a3e-abc8-14d7c7d40037
+# ╠═47f22aff-8365-4283-a055-a90e0b7cdc03
+# ╠═4b13e105-acbd-4384-af80-8c56341edf08
+# ╠═d43c23ce-f195-4e8c-8faf-fc5ac747ca2f
+# ╠═b3b02e37-d252-409d-bfc7-ab9778f36162
+# ╠═a6507d4a-6d3e-4578-804e-b24430b1dce5
+# ╠═c2d3f7f5-fb16-45ae-ac69-90b9f739022d
+# ╠═b285135d-9621-4a0c-a805-4d6c58c39624
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
